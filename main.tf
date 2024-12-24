@@ -61,7 +61,7 @@ resource "aws_instance" "web_server" {
       "sudo systemctl enable nginx",       # Enable Nginx to start on boot
       "sudo systemctl status nginx || true" # Log Nginx status and continue even if non-zero
     ]
-    on_failure = continue
+    
   }
 
 }
