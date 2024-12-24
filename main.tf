@@ -54,11 +54,12 @@ resource "aws_instance" "web_server" {
     }
 
     inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install -y nginx",
-      "sudo systemctl start nginx",
-      "sudo systemctl enable nginx",
-      "sudo systemctl status nginx"
+      "set -x",                            # Enable debugging for executed commands
+      "sudo apt-get update -y",            # Update package repositories
+      "sudo apt-get install -y nginx",     # Install Nginx
+      "sudo systemctl start nginx",        # Start Nginx service
+      "sudo systemctl enable nginx",       # Enable Nginx to start on boot
+      "sudo systemctl status nginx || true" # Log Nginx status and continue even if non-zero
     ]
     on_failure = continue
   }
