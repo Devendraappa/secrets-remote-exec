@@ -35,7 +35,7 @@ resource "aws_security_group" "web_sg" {
 resource "aws_instance" "web_server" {
   ami           = var.aws_ami
   instance_type = var.instance_type
-  key_name      = "guru"
+  key_name      = "desktop"
 
   security_groups = [ aws_security_group.web_sg.name ]
 
